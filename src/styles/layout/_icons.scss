@@ -1,0 +1,20 @@
+.icon {
+  width: 1.6rem;
+  height: 1.6rem;
+  color: transparent;
+  cursor: pointer;
+  border-radius: 50%;
+  box-shadow: 0 0 5px 0 var(--color-greyish-brown-two);
+
+  &__www {
+    background-image: url("../images/icons/globe-solid.svg");
+  }
+
+  &__github {
+    background-image: url("../images/icons/github.svg");
+  }
+}
+
+.favicon {
+  color: black;
+}

@@ -1,0 +1,43 @@
+.imageEditor {
+
+    &__container {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        /* Asegura que el contenedor sea cuadrado */
+        position: relative;
+        overflow: hidden;
+    }
+
+    &__button {
+        display: block;
+        min-width: 120px;
+        max-width: 150px;
+        margin: 8px;
+        padding: 5px 18px;
+        color: var(--color-white);
+        font: var(--font-button);
+        text-transform: none;
+        text-decoration: none;
+        text-align: center;
+        border-radius: 40px;
+        background-image: linear-gradient(to right, var(--color-dark-lilac) -2%, #c0b7e8 98%);
+        cursor: pointer;
+
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 10;
+
+        transition: transform 0.2s ease;
+
+        &:hover {
+            transform: translateX(-50%) scale(1.1);
+        }
+
+        &:active {
+            background-color: white;
+            color: var(--color-dark-lilac);
+        }
+    }
+}

@@ -1,0 +1,19 @@
+.hero {
+  margin-bottom: 3rem;
+
+  @media screen and (min-width: 768px) {
+    grid-column: span 2;
+  }
+
+  .title {
+    font: var(--font-title-big);
+    margin-bottom: 8px;
+  }
+
+  &__text {
+    font: var(--font-text-big);
+    text-align: center;
+    margin-inline: 4rem;
+    margin-bottom: 1.8rem;
+  }
+}
