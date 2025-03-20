@@ -21,7 +21,7 @@ SET @@SESSION.SQL_LOG_BIN= 0;
 -- GTID state at the beginning of the backup 
 --
 
-SET @@GLOBAL.GTID_PURGED=/*!80000 '+'*/ '78baa715-042a-11f0-b193-cefbbf00ade1:1-44';
+SET @@GLOBAL.GTID_PURGED=/*!80000 '+'*/ '78baa715-042a-11f0-b193-cefbbf00ade1:1-48';
 
 --
 -- Table structure for table `autores`
@@ -32,10 +32,9 @@ DROP TABLE IF EXISTS `autores`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `autores` (
   `id` varchar(36) NOT NULL,
-  `name` varchar(255) NOT NULL,
+  `autor` varchar(255) DEFAULT NULL,
   `job` varchar(255) NOT NULL,
   `image` longtext NOT NULL,
-  `description` text NOT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `foreign_key` FOREIGN KEY (`id`) REFERENCES `proyectos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -60,11 +59,12 @@ DROP TABLE IF EXISTS `proyectos`;
 CREATE TABLE `proyectos` (
   `id` varchar(36) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `description` text NOT NULL,
+  `desc` text,
   `technologies` text NOT NULL,
   `photo` longtext NOT NULL,
   `repo` varchar(600) NOT NULL,
   `demo` varchar(600) NOT NULL,
+  `slogan` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -88,4 +88,4 @@ SET @@SESSION.SQL_LOG_BIN = @MYSQLDUMP_TEMP_LOG_BIN;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-03-19 16:49:12
+-- Dump completed on 2025-03-20 21:34:02
