@@ -46,3 +46,43 @@ ON autores.id = proyectos.id;`);
     results: results,
   });
 });
+
+app.post("/api/autores"),
+  async (req, res) => {
+    const uuid = window.crypto.randomUUID();
+    console.log(uuid);
+
+    // Condicionales para comprobar que vienen los param obligatorios
+
+    try {
+      const conn = await getConnection();
+
+      const [result] = await conn.execute(
+        `FROM coolproject.autores 
+      JOIN coolproject.proyectos 
+     ON autores.id = proyectos.id
+      INSERT INTO (name, slogan, technologies, repo, demo, desc, autor, job, image, photo)  
+ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+        `[(req.body.name, req.body.slogan, req.body.technologies, req.body.repo, req.body.demo, req.body.desc, req.body.autor, req.body.job, req.body.image, req.body.photo)]
+      );
+
+      await conn.end();
+
+      if (result.affectedRows === 1) {
+        res.json({
+          success: true,
+          id: result.insertId,
+        });
+      } else {
+        res.status(500).json({
+          success: false,
+          message: "Not inserted",
+        });
+      }
+    } catch (err) {
+      res.status(500).json({
+        success: false,
+        message: err.toString(),
+      });
+    }
+  };
