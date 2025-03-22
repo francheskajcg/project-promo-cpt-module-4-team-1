@@ -15,7 +15,7 @@ function Form({ projectData, setProjectData, handleSubmit, error, projectUrl }) 
             technologies: "",
             repo: "",
             demo: "",
-            desc: "",
+            description: "",
             autor: "",
             job: "",
             image: "",
@@ -36,7 +36,7 @@ function Form({ projectData, setProjectData, handleSubmit, error, projectUrl }) 
                 "technologies": "tecnologías",
                 "repo": "repositorio",
                 "demo": "demo",
-                "desc": "descripción",
+                "description": "descripción",
                 "autor": "nombre de la autora",
                 "job": "trabajo",
                 "image": "imagen",
@@ -94,7 +94,7 @@ function Form({ projectData, setProjectData, handleSubmit, error, projectUrl }) 
         if (!projectData.technologies) newErrors.technologies = "Las tecnologías son obligatorias";
         if (!projectData.repo || !/^https?:\/\/.+/.test(projectData.repo)) newErrors.repo = "El repositorio debe ser una URL válida";
         if (!projectData.demo || !/^https?:\/\/.+/.test(projectData.demo)) newErrors.demo = "La demo debe ser una URL válida";
-        if (!projectData.desc) newErrors.desc = "La descripción es obligatoria";
+        if (!projectData.description) newErrors.description = "La descripción es obligatoria";
         if (!projectData.autor) newErrors.autor = "El nombre de la autora es obligatorio";
         if (!projectData.job) newErrors.job = "El trabajo es obligatorio";
 
@@ -130,8 +130,8 @@ function Form({ projectData, setProjectData, handleSubmit, error, projectUrl }) 
                 <input className="addForm__input" type="url" name="demo" placeholder="Demo" value={projectData.demo} onChange={handleChange} />
                 {errors.demo && <span className="error">{errors.demo}</span>}
 
-                <textarea className="addForm__input" name="desc" placeholder="Descripción" rows="5" value={projectData.desc} onChange={handleChange}></textarea>
-                {errors.desc && <span className="error">{errors.desc}</span>}
+                <textarea className="addForm__input" name="description" placeholder="Descripción" rows="5" value={projectData.description} onChange={handleChange}></textarea>
+                {errors.description && <span className="error">{errors.description}</span>}
             </fieldset>
 
             <fieldset className="addForm__group">
@@ -208,7 +208,7 @@ Form.propTypes = {
         technologies: PropTypes.string,
         repo: PropTypes.string,
         demo: PropTypes.string,
-        desc: PropTypes.string,
+        description: PropTypes.string,
         autor: PropTypes.string,
         job: PropTypes.string,
         image: PropTypes.string,

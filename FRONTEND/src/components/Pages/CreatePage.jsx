@@ -29,7 +29,7 @@ CreatePage.propTypes = {
         technologies: PropTypes.string,
         repo: PropTypes.string,
         demo: PropTypes.string,
-        desc: PropTypes.string,
+        description: PropTypes.string,
         autor: PropTypes.string,
         job: PropTypes.string,
         image: PropTypes.string,

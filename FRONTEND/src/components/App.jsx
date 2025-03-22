@@ -21,7 +21,7 @@ function App() {
       technologies: "",
       repo: "",
       demo: "",
-      desc: "",
+      description: "",
       autor: "",
       job: "",
       image: "",
@@ -45,7 +45,7 @@ function App() {
     const allProjects = [...previousProjects, newProject];
     localStorage.setItem("projects", JSON.stringify(allProjects));
 
-    fetch('https://dev.adalab.es/api/projectCard/', {
+    fetch('http://localhost:3000/api/autores', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(projectData),

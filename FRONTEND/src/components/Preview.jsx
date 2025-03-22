@@ -34,7 +34,7 @@ function Preview({ projectData }) {
                     <h3 className="card__name">{projectData.name || "Elegant Workspace"}</h3>
                     <p className="card__slogan">{projectData.slogan || "Diseños Exclusivos"}</p>
                     <h3 className="card__descriptionTitle">Product description</h3>
-                    <p className="card__description">{projectData.desc || "Descripción del proyecto aquí..."}</p>
+                    <p className="card__description">{projectData.description || "Descripción del proyecto aquí..."}</p>
 
                     <div className="card__technicalInfo">
                         <p className="card__technologies">{projectData.technologies || "React JS - HTML - CSS"}</p>
@@ -63,7 +63,7 @@ Preview.propTypes = {
         technologies: PropTypes.string,
         repo: PropTypes.string,
         demo: PropTypes.string,
-        desc: PropTypes.string,
+        description: PropTypes.string,
         autor: PropTypes.string,
         job: PropTypes.string,
         image: PropTypes.string,
