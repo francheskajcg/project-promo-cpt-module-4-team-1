@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Proyectos molones | <%= projectData.name %>
+    </title>
+    <link rel="stylesheet" href="/main.css" />
+</head>
+
+<body>
+    <div class="container">
+        <main class="main">
+            <section class="preview">
+                <article class="card">
+                    <h2 class="card__projectTitle">
+                        <span class="card__projectTitle--text">
+                            <%= projectData.name %>
+                        </span>
+                    </h2>
+
+                    <div class="card__author">
+                        <div class="card__authorPhoto">
+                            <img src="<%= projectData.image %>" alt="Foto autor" />
+                        </div>
+                        <h3 class="card__name">
+                            <%= projectData.autor %> – <%= projectData.job %>
+                        </h3>
+                    </div>
+                    <div class="card__project">
+                        <img src="<%= projectData.photo %>" alt="Imagen del proyecto" />
+                        <p><strong>Slogan:</strong>
+                            <%= projectData.slogan %>
+                        </p>
+                        <p><strong>Descripción:</strong>
+                            <%= projectData.description %>
+                        </p>
+                        <p><strong>Tecnologías:</strong>
+                            <%= projectData.technologies %>
+                        </p>
+                        <p>
+                            <a href="<%= projectData.repo %>" target="_blank">Repo</a> |
+                            <a href="<%= projectData.demo %>" target="_blank">Demo</a>
+                        </p>
+                    </div>
+                </article>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>

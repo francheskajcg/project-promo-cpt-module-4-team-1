@@ -23,6 +23,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.json({ limit: '25Mb' }));
+app.set('view engine', 'ejs');
+
+
 
 // Arrancamos el servidor
 const port = 3000;
@@ -73,7 +76,7 @@ app.post("/api/autores", async (req, res) => {
     );
 
     await conn.commit(); // Confirmar transacción
-    res.json({ success: true, cardURL: `${req.protocol}://${req.hostname}/projectCard/${uuid}`});
+    res.json({ success: true, cardURL: `${req.protocol}://${req.hostname}:3000/autores/${uuid}` });
   } catch (err) {
     if (conn) await conn.rollback(); // Revertir transacción en caso de error
     res.status(500).json({ success: false, message: err.toString() });
@@ -82,7 +85,7 @@ app.post("/api/autores", async (req, res) => {
   }
 });
 
-app.get("/api/:id", async (req, res) => {
+app.get("/api/autores/:id", async (req, res) => {
   console.log(req.params);
 
   try {
@@ -108,4 +111,25 @@ app.get("/api/:id", async (req, res) => {
   } catch (err) {
     res.status(500).json({ message: err.toString() });
   }
+});
+
+app.get('/autores/:uuid', async (req, res) => {
+
+  console.log(req.params.uuid);
+
+  const projectData = (req.params.uuid);
+
+  console.log(projectData);
+
+  // EJS
+  res.render('projectDetail', { projectData })
+});
+
+const path = require('node:path');
+
+app.use(express.static(path.join(__dirname, 'static_detail_styles')));
+
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'static_public_frontend', 'index.html'));
 });
