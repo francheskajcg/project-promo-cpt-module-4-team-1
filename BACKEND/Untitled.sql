@@ -21,7 +21,7 @@ SET @@SESSION.SQL_LOG_BIN= 0;
 -- GTID state at the beginning of the backup 
 --
 
-SET @@GLOBAL.GTID_PURGED=/*!80000 '+'*/ '78baa715-042a-11f0-b193-cefbbf00ade1:1-48';
+SET @@GLOBAL.GTID_PURGED=/*!80000 '+'*/ '78baa715-042a-11f0-b193-cefbbf00ade1:1-49';
 
 --
 -- Table structure for table `autores`
@@ -59,7 +59,7 @@ DROP TABLE IF EXISTS `proyectos`;
 CREATE TABLE `proyectos` (
   `id` varchar(36) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `desc` text,
+  `description` text NOT NULL,
   `technologies` text NOT NULL,
   `photo` longtext NOT NULL,
   `repo` varchar(600) NOT NULL,
@@ -88,4 +88,4 @@ SET @@SESSION.SQL_LOG_BIN = @MYSQLDUMP_TEMP_LOG_BIN;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-03-20 21:34:02
+-- Dump completed on 2025-03-22 10:26:15

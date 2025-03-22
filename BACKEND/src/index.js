@@ -78,9 +78,9 @@ app.post("/api/autores", async (req, res) => {
 
     // Insertar en "proyectos"
     await conn.execute(
-      `INSERT INTO proyectos (id, name, slogan, technologies, repo, demo, desc, photo)
+      `INSERT INTO proyectos (id, name, slogan, technologies, repo, demo, description, photo)
        VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
-      [uuid, req.body.name, req.body.slogan, req.body.technologies, req.body.repo, req.body.demo, req.body.desc, req.body.photo]
+      [uuid, req.body.name, req.body.slogan, req.body.technologies, req.body.repo, req.body.demo, req.body.description, req.body.photo]
     );
 
     // Insertar en "autores"
