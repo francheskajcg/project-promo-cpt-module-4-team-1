@@ -24,3 +24,9 @@
   flex-direction: row;
 
 }
+
+.btn__links {
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+}
