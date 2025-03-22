@@ -83,3 +83,17 @@
     }
   }
   
+  .project-list__loading {
+    text-align: center;
+    color: #cccccc;
+    font-style: italic;
+    margin: 2rem 0;
+  }
+  
+  .project-list__error {
+    text-align: center;
+    color: #ff4d4f;
+    font-weight: bold;
+    margin: 2rem 0;
+  }
+  

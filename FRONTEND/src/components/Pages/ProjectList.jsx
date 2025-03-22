@@ -1,21 +1,46 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import '../../styles/layout/ProjectList.scss';
 
 function ProjectList() {
   const [projects, setProjects] = useState([]);
+  const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(true); // nuevo estado para loading
+
+  const API_URL = import.meta.env.PROD
+  ? "/api/autores"
+  : "http://localhost:3000/api/autores";
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/autores")
-      .then((res) => res.json())
-      .then((data) => setProjects(data.results))
-      .catch((err) => console.error("Error al cargar proyectos:", err));
+    fetch(API_URL)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`Error del servidor: ${res.status}`);
+        }
+        return res.json();
+      })
+      .then((data) => {
+        setProjects(data.results);
+        setError('');
+      })
+      .catch((err) => {
+        console.error("Error al cargar proyectos:", err);
+        setError('No se pudieron cargar los proyectos. Intenta más tarde.');
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, []);
+  
 
   return (
     <section className="project-list">
       <h1>Proyectos Personales Molones</h1>
-      {projects.map((project) => (
+
+      {isLoading && <p className="project-list__loading">Cargando proyectos...</p>}
+
+      {error && <p className="project-list__error">{error}</p>}
+
+      {!isLoading && !error && projects.map((project) => (
         <article key={project.id} className="project-card">
           <img src={project.image || project.photo} alt={project.autor} />
           <p>{project.job}</p>
@@ -25,8 +50,8 @@ function ProjectList() {
           <p>{project.description}</p>
           <div className="tech">{project.technologies}</div>
           <div className="links">
-            <a href={project.repo} target="_blank">📁</a>
-            <a href={project.demo} target="_blank">🌐</a>
+            <a href={project.repo} target="_blank" rel="noreferrer">📁</a>
+            <a href={project.demo} target="_blank" rel="noreferrer">🌐</a>
           </div>
         </article>
       ))}

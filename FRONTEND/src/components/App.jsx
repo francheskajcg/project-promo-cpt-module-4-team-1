@@ -8,7 +8,6 @@ import Preview from './Preview';
 import { Route, Routes, Link } from "react-router-dom";
 import ProjectList from './Pages/ProjectList';
 
-
 function App() {
 
   const [error, setError] = useState('');
@@ -47,7 +46,9 @@ function App() {
     const allProjects = [...previousProjects, newProject];
     localStorage.setItem("projects", JSON.stringify(allProjects));
 
-    fetch('http://localhost:3000/api/autores', {
+const API_URL = import.meta.env.PROD ? "/api/autores" : 'http://localhost:3000/api/autores';
+
+    fetch(API_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(projectData),
@@ -56,14 +57,24 @@ function App() {
       .then((responseData) => {
 
 
+        if (!response.ok) {
+          throw new Error(`Error del servidor: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((responseData) => {
         if (responseData.success === false) {
-          setError(responseData.error);
+          setError(responseData.message || responseData.error || 'Error desconocido');
         } else {
           setProjectUrl(responseData.cardURL);
+          setError(''); // Limpia errores anteriores
         }
-
         console.log("Servidor respondió:", responseData);
       })
+      .catch((err) => {
+        setError('Error al conectar con el servidor. Inténtalo más tarde.');
+        console.error('Error en el fetch:', err);
+      });
 
   }
 

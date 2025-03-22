@@ -16,7 +16,8 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "node --watch src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "rm -rf src/static_public_frontend ; cd FRONTEND_REACT ; npm run build ; mv dist/ ../src/static_public_frontend/"
   },
   "repository": {
     "type": "git",
