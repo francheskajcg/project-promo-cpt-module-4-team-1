@@ -53,25 +53,6 @@ app.post("/api/autores", async (req, res) => {
   const uuid = uuidv4();
   let conn;
 
-  // Validación de campos obligatorios
-  if (
-    !req.body.name ||
-    !req.body.slogan ||
-    !req.body.technologies ||
-    !req.body.repo ||
-    !req.body.demo ||
-    !req.body.desc ||
-    !req.body.autor ||
-    !req.body.job ||
-    !req.body.image ||
-    !req.body.photo
-  ) {
-    return res.status(400).json({
-      success: false,
-      message: "Missing required fields",
-    });
-  }
-
   try {
     conn = await getConnection();
     await conn.beginTransaction(); // Iniciar transacción
