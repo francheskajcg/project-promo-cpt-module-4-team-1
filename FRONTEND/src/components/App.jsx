@@ -6,6 +6,8 @@ import Landing from './Pages/Landing';
 import Form from './Form';
 import Preview from './Preview';
 import { Route, Routes, Link } from "react-router-dom";
+import ProjectList from './Pages/ProjectList';
+
 
 function App() {
 
@@ -76,6 +78,7 @@ function App() {
           <Routes>
 
             <Route index element={<Landing />} />
+            <Route path="list" element={<ProjectList />} />
 
             <Route path="create"
               element={<div className="createPage">

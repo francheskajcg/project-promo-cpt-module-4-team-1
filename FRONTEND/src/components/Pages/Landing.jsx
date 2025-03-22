@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import Hero from "../Hero";
 
 import Graphic from '../../images/adalab-graphic.png';
 
@@ -6,6 +7,7 @@ function Landing() {
 
     return (
         <>
+            <Hero />
             <section className="landing">
 
                 <img className="graphic" src={Graphic} alt="adalab-graphic" />
