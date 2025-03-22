@@ -73,7 +73,7 @@ app.post("/api/autores", async (req, res) => {
     );
 
     await conn.commit(); // Confirmar transacción
-    res.json({ success: true, id: uuid });
+    res.json({ success: true, cardURL: `${req.protocol}://${req.hostname}/projectCard/${uuid}`});
   } catch (err) {
     if (conn) await conn.rollback(); // Revertir transacción en caso de error
     res.status(500).json({ success: false, message: err.toString() });
