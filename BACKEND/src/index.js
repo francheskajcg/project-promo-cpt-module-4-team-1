@@ -47,42 +47,55 @@ ON autores.id = proyectos.id;`);
   });
 });
 
-app.post("/api/autores"),
-  async (req, res) => {
-    const uuid = window.crypto.randomUUID();
-    console.log(uuid);
+const { v4: uuidv4 } = require('uuid');
 
-    // Condicionales para comprobar que vienen los param obligatorios
+app.post("/api/autores", async (req, res) => {
+  const uuid = uuidv4();
+  let conn;
 
-    try {
-      const conn = await getConnection();
+  // Validación de campos obligatorios
+  if (
+    !req.body.name ||
+    !req.body.slogan ||
+    !req.body.technologies ||
+    !req.body.repo ||
+    !req.body.demo ||
+    !req.body.desc ||
+    !req.body.autor ||
+    !req.body.job ||
+    !req.body.image ||
+    !req.body.photo
+  ) {
+    return res.status(400).json({
+      success: false,
+      message: "Missing required fields",
+    });
+  }
 
-      const [result] = await conn.execute(
-        `FROM coolproject.autores 
-      JOIN coolproject.proyectos 
-     ON autores.id = proyectos.id
-      INSERT INTO (name, slogan, technologies, repo, demo, desc, autor, job, image, photo)  
- VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
-        `[(req.body.name, req.body.slogan, req.body.technologies, req.body.repo, req.body.demo, req.body.desc, req.body.autor, req.body.job, req.body.image, req.body.photo)]
-      );
+  try {
+    conn = await getConnection();
+    await conn.beginTransaction(); // Iniciar transacción
 
-      await conn.end();
+    // Insertar en "proyectos"
+    await conn.execute(
+      `INSERT INTO proyectos (id, name, slogan, technologies, repo, demo, desc, photo)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+      [uuid, req.body.name, req.body.slogan, req.body.technologies, req.body.repo, req.body.demo, req.body.desc, req.body.photo]
+    );
 
-      if (result.affectedRows === 1) {
-        res.json({
-          success: true,
-          id: result.insertId,
-        });
-      } else {
-        res.status(500).json({
-          success: false,
-          message: "Not inserted",
-        });
-      }
-    } catch (err) {
-      res.status(500).json({
-        success: false,
-        message: err.toString(),
-      });
-    }
-  };
+    // Insertar en "autores"
+    await conn.execute(
+      `INSERT INTO autores (id, autor, job, image)
+       VALUES (?, ?, ?, ?)`,
+      [uuid, req.body.autor, req.body.job, req.body.image]
+    );
+
+    await conn.commit(); // Confirmar transacción
+    res.json({ success: true, id: uuid });
+  } catch (err) {
+    if (conn) await conn.rollback(); // Revertir transacción en caso de error
+    res.status(500).json({ success: false, message: err.toString() });
+  } finally {
+    if (conn) await conn.end(); // Cerrar conexión
+  }
+});
