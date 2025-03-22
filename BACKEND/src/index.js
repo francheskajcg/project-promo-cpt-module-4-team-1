@@ -80,3 +80,31 @@ app.post("/api/autores", async (req, res) => {
     if (conn) await conn.end(); // Cerrar conexión
   }
 });
+
+app.get("/api/:id", async (req, res) => {
+  console.log(req.params);
+
+  try {
+    const conn = await getConnection();
+
+    const [results] = await conn.query(
+      `SELECT a.autor, a.job, a.image,
+              p.name, p.slogan, p.technologies, p.repo, p.demo, p.description, p.photo
+       FROM coolproject.autores AS a
+       JOIN coolproject.proyectos AS p
+       ON a.id = p.id
+       WHERE a.id = ?`,
+      [req.params.id]
+    );
+
+    await conn.end();
+
+    if (results.length === 0) {
+      return res.status(404).json({ message: "No encontrado" });
+    }
+
+    res.json(results[0]);
+  } catch (err) {
+    res.status(500).json({ message: err.toString() });
+  }
+});
