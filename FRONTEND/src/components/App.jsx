@@ -41,10 +41,6 @@ function App() {
   const handleSubmit = (ev) => {
     ev.preventDefault();
 
-    const previousProjects = JSON.parse(localStorage.getItem("projects")) || [];
-    const newProject = { ...projectData, dateAdded: new Date().toISOString() };
-    const allProjects = [...previousProjects, newProject];
-    localStorage.setItem("projects", JSON.stringify(allProjects));
 
     const API_URL = import.meta.env.PROD ? "/api/autores" : "http://localhost:3000/api/autores";
 
