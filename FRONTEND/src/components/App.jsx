@@ -46,17 +46,14 @@ function App() {
     const allProjects = [...previousProjects, newProject];
     localStorage.setItem("projects", JSON.stringify(allProjects));
 
-const API_URL = import.meta.env.PROD ? "/api/autores" : 'http://localhost:3000/api/autores';
+    const API_URL = import.meta.env.PROD ? "/api/autores" : "http://localhost:3000/api/autores";
 
     fetch(API_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(projectData),
     })
-      .then(response => response.json())
-      .then((responseData) => {
-
-
+      .then((response) => {
         if (!response.ok) {
           throw new Error(`Error del servidor: ${response.status}`);
         }
@@ -64,19 +61,19 @@ const API_URL = import.meta.env.PROD ? "/api/autores" : 'http://localhost:3000/a
       })
       .then((responseData) => {
         if (responseData.success === false) {
-          setError(responseData.message || responseData.error || 'Error desconocido');
+          setError(responseData.message || responseData.error || "Error desconocido");
         } else {
           setProjectUrl(responseData.cardURL);
-          setError(''); // Limpia errores anteriores
+          setError(""); // Limpia errores anteriores
         }
         console.log("Servidor respondió:", responseData);
       })
       .catch((err) => {
-        setError('Error al conectar con el servidor. Inténtalo más tarde.');
-        console.error('Error en el fetch:', err);
+        setError("Error al conectar con el servidor. Inténtalo más tarde.");
+        console.error("Error en el fetch:", err);
       });
+  };
 
-  }
 
 
   return (

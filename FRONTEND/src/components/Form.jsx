@@ -9,7 +9,7 @@ function Form({ projectData, setProjectData, handleSubmit, error, projectUrl }) 
     const [errors, setErrors] = useState({});
 
     const handleReset = () => {
-        setProjectData({
+        const emptyProjectData = {
             name: "",
             slogan: "",
             technologies: "",
@@ -20,9 +20,13 @@ function Form({ projectData, setProjectData, handleSubmit, error, projectUrl }) 
             job: "",
             image: "",
             photo: "",
-        });
-        setErrors({});
+        };
+
+        setProjectData(emptyProjectData); // Resetea el estado
+        setErrors({}); // Limpia errores anteriores
+        localStorage.removeItem('projectData'); // Borra los datos guardados en localStorage
     };
+
 
     const traducirErrores = (mensaje) => {
         if (mensaje.startsWith("Mandatory fields:")) {
