@@ -27,7 +27,7 @@ function ProjectList() {
       .finally(() => setIsLoading(false));
   }, []);
   return (
-    <section className="project-list">
+    <section className="preview">
       <h1>Proyectos Personales Molones</h1>
 
       {isLoading && (
@@ -38,44 +38,67 @@ function ProjectList() {
       {!isLoading &&
         !error &&
         projects.map((project) => (
-          <article key={project.id} className="project-card">
-            <h2 className="project-card__title">
-              <span className="project-card__title__text">{project.name}</span>
+
+
+          <article key={project.id} className="card">
+            <h2 className="card__projectTitle">
+              <span className="card__projectTitle__text">{project.name}</span>
             </h2>
 
-            <div className="project-card__author">
-              <div className="project-card__photo">
+            <div className="card__author">
+              <div className="card__authorPhoto">
                 <img
+                  className="card__uploadAuthorPhoto"
                   src={project.image || "/images/avatar.webp"}
                   alt={project.autor}
                 />
               </div>
-              <p className="project-card__job">{project.job}</p>
 
-              <h3 className="project-card__name">{project.autor}</h3>
+
+              <p className="card__job">{project.job}</p>
+
+              <h3 className="card__name">{project.autor}</h3>
             </div>
 
-            <div className="project-card__content">
-              <p className="project-card__slogan">{project.slogan}</p>
-              <p className="project-card__desc">{project.description}</p>
-              <p className="project-card__tech">{project.technologies}</p>
+            <div className="card__project">
 
-              <div className="project-card__links">
+              <h3 className="card__name">
+                {project.name}
+              </h3>
+              <p className="card__slogan">
+                {project.slogan}
+              </p>
+              <h3 className="card__descriptionTitle">Product description</h3>
+              <p className="card__description">
+                {project.description}
+              </p>
+
+
+
+              <div className="card__technicalInfo">
+                <p className="card__technologies">
+                  {project.technologies}
+                </p>
+
                 {project.demo && (
                   <a
                     className="icon icon__www"
                     href={project.demo}
                     target="_blank"
-                    rel="noreferrer"
-                  ></a>
+                    rel="noopener noreferrer"
+                  >
+                    Web link
+                  </a>
                 )}
                 {project.repo && (
                   <a
                     className="icon icon__github"
                     href={project.repo}
                     target="_blank"
-                    rel="noreferrer"
-                  ></a>
+                    rel="noopener noreferrer"
+                  >
+                    GitHub link
+                  </a>
                 )}
               </div>
             </div>

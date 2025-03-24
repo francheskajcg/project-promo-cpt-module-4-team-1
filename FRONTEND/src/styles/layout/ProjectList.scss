@@ -1,152 +1,154 @@
-.project-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  padding: 2rem 1rem;
-  background-color: #2b2c48;
-}
+.preview {
 
-.project-list h1 {
-  grid-column: 1 / -1;
-  text-align: center;
-  color: white;
-  font-size: 1.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.project-card {
-  background-color: white;
-  border-radius: 15px;
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
-  font-family: "Poppins", sans-serif;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-}
-
-.project-card__title {
-  text-align: center;
-  font-size: 0.9rem;
-  text-transform: capitalize;
-  margin-bottom: 1rem;
-}
-
-.project-card__author {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-
-.project-card__photo {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  overflow: hidden;
-  background-color: #ccc;
-  margin-bottom: 0.5rem;
-}
-
-.project-card__photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.project-card__job {
-  font-size: 0.8rem;
-  color: #666;
-}
-
-.project-card__name {
-  font-size: 1rem;
-  font-weight: 600;
-  margin-top: 0.2rem;
-}
-
-.project-card__content {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.project-card__slogan {
-  font-weight: 500;
-  font-size: 0.95rem;
-  color: #333;
-}
-
-.project-card__desc {
-  font-size: 0.85rem;
-  color: #555;
-}
-
-.project-card__tech {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: #8176af;
-  margin-top: 0.5rem;
-}
-
-.project-card__links {
-  display: flex;
-  gap: 1rem;
-  margin-top: 1rem;
-  justify-content: center;
-}
-
-.icon {
-  width: 1.4rem;
-  height: 1.4rem;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-}
-
-.icon__www {
-  background-image: url('/images/icons/globe-solid.svg');
-}
-
-.icon__github {
-  background-image: url('/images/icons/github.svg');
-}
-
-.project-list__loading,
-.project-list__error {
-  grid-column: 1 / -1;
-  text-align: center;
-  font-style: italic;
-  color: white;
-}
-
-@media (min-width: 320px) {
-  .project-card {
-    padding: 1.2rem;
+  .projectImage,
+  .uploadProjectImage {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    outline: solid 1px pink;
   }
-  .project-card__title {
-    font-size: 1rem;
-  }
-}
 
-@media (min-width: 768px) {
-  .project-card {
-    flex-direction: row;
+  .projectImage {
+    background-image: url("../images/ebook-example.jpg");
+    background-position: top center;
+    background-size: cover;
+    overflow: hidden;
+  }
+
+  .uploadProjectImage {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+
+  .uploadMessage {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+    margin-top: 10px;
+  }
+
+  .card {
+    margin-inline: 20px;
+    transform: translateY(-45px);
     display: grid;
     grid-template-columns: 40% 60%;
-    padding: 1.5rem;
-  }
-  .project-card__content {
-    grid-column: 2;
-  }
-}
+    color: var(--color-black);
+    font: var(--font-card-text);
+    border-radius: 20px;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-style: solid;
+    border-width: 1px;
+    border-image-source: linear-gradient(to bottom,
+        var(--color-white) 0%,
+        rgba(0, 0, 0, 0));
+    border-image-slice: 1;
+    background-image: linear-gradient(to bottom, var(--color-white), var(--color-white)),
+      linear-gradient(to bottom, var(--color-white) 0%, rgba(0, 0, 0, 0));
+    background-origin: border-box;
+    background-clip: content-box, border-box;
 
-@media (min-width: 1200px) {
-  .project-list {
-    padding: 4rem 3rem;
-  }
-  .project-card {
-    max-width: 900px;
-    margin: auto;
+    &__projectTitle {
+      grid-column: 2;
+      position: relative;
+      margin: 15px 10px 1rem 0;
+      text-align: center;
+      text-transform: capitalize;
+      font: var(--font-card-section);
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: calc(50% - 1px);
+        bottom: calc(50% - 1px);
+        left: 0;
+        right: 0;
+        z-index: 0;
+        background-image: linear-gradient(to right,
+            white,
+            #232323 15%,
+            var(--color-black),
+            #232323 85%,
+            white);
+      }
+
+      &__text {
+        position: relative;
+        padding-inline: 0.1em;
+        z-index: 1;
+        background-color: var(--color-white);
+      }
+    }
+
+    &__uploadAuthorPhoto {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    &__author {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 10px;
+      text-align: center;
+      overflow: hidden;
+      word-wrap: break-word;
+      max-width: 100%;
+
+      &Photo {
+        width: 75px;
+        height: 75px;
+        border-radius: 50%;
+        background-image: url("../images/avatar.webp");
+        overflow: hidden;
+        background-position: center;
+        background-size: cover;
+        margin-bottom: 0.8rem;
+      }
+
+      &__job {
+        margin-bottom: 0.2rem;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        max-width: 100%;
+      }
+
+      &__name {
+        font: var(--font-card-title);
+        margin-bottom: 0.2rem;
+        text-align: center;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        max-width: 100%;
+      }
+    }
+
+    &__project {
+      margin-right: 10px;
+    }
+
+    &__slogan {
+      font: var(--font-card-subtitle);
+      margin-top: -0.2rem;
+      margin-bottom: 0.8rem;
+    }
+
+    &__descriptionTitle {
+      font-weight: inherit;
+      text-transform: capitalize;
+    }
+
+    &__technicalInfo {
+      display: grid;
+      grid-template-columns: 1fr 2rem 2rem;
+      gap: 0.5em;
+      margin-block: 1.8rem;
+    }
+
+    &__technologies {
+      font: var(--font-card-tech);
+    }
   }
 }
