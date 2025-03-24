@@ -12,13 +12,20 @@
     "deploy": "npm run build ; mv dist docs ; git add docs ; git commit -m 'Update GitHub Pages' ; git push"
   },
   "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "expressjs": "^1.0.1",
+    "mysql2": "^3.14.0",
     "prop-types": "^15.8.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-easy-crop": "^5.2.0",
     "react-router": "^7.1.5",
     "react-router-dom": "^7.1.5",
-    "sass": "^1.83.4"
+    "sass": "^1.86.0",
+    "uuid": "^11.1.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
