@@ -24,7 +24,7 @@
 
 1️⃣ Clona el repositorio:  
 ```sh
-git clone https://github.com/francheskajcg/project-promo-cpt-module-4-team-1/tree/main
+git clone https://github.com/francheskajcg/project-promo-cpt-module-4-team-1/
 ```
 
 2️⃣ Instala las dependencias en el backend y frontend:  
