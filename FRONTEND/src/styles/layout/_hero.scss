@@ -1,19 +1,28 @@
-.hero {
-  margin-bottom: 3rem;
+@use '../core/mixins' as mx; 
 
-  @media screen and (min-width: 768px) {
+.hero {
+  margin-block: 3.5rem;
+
+  @include mx.tablet {
     grid-column: span 2;
+    margin-block: 3rem;
   }
 
   .title {
-    font: var(--font-title-big);
+    //font: var(--font-title-big);
+    font-size: 35px;
     margin-bottom: 8px;
   }
 
   &__text {
-    font: var(--font-text-big);
+    //font: var(--font-text-big);
+    font-size: 15px;
     text-align: center;
     margin-inline: 4rem;
     margin-bottom: 1.8rem;
+
+    @include mx.tablet {
+      font-size: 18px;
+    }
   }
 }

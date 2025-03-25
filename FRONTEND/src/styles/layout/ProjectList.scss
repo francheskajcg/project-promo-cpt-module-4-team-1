@@ -1,13 +1,20 @@
-@use '../core/mixins' as mx; 
+@use "../core/mixins" as mx;
 
 .previewList {
-  margin-top: 100px;
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
 
   @include mx.tablet {
-    display: flex;
-    flex-wrap: wrap; 
-    justify-content: space-between; 
-    gap: 20px; 
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  @include mx.desktop {
+    margin-inline: 220px;
   }
 
   .projectImage,
@@ -37,7 +44,7 @@
     margin-top: 10px;
   }
   .cardList {
-    margin-block: 25px;
+    margin-block: 4px;
     margin-inline: -2px;
     padding-inline: 2px;
     transform: translateY(-45px);
@@ -48,27 +55,38 @@
     border-radius: 20px;
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
-    
+    width: 280px;
+
     border-width: 1px;
-    border-image-source: linear-gradient(to bottom,
-        var(--color-white) 0%,
-        rgba(0, 0, 0, 0));
+    border-image-source: linear-gradient(
+      to bottom,
+      var(--color-white) 0%,
+      rgba(0, 0, 0, 0)
+    );
     border-image-slice: 1;
-    background-image: linear-gradient(to bottom, var(--color-white), var(--color-white)),
+    background-image: linear-gradient(
+        to bottom,
+        var(--color-white),
+        var(--color-white)
+      ),
       linear-gradient(to bottom, var(--color-white) 0%, rgba(158, 30, 30, 0));
     background-origin: border-box;
     background-clip: content-box, border-box;
 
     @include mx.tablet {
-     width: 350px;
+      width: 350px;
+      max-width: 700px;
     }
 
     @include mx.desktop {
-      width: 400px;
-      margin-inline: 80px;
+      margin-block: 4px;
     }
 
-  
+    /*@include mx.desktop {
+      width: 400px;
+      margin-inline: 80px;
+    }*/
+
     &__projectTitle {
       grid-column: 2;
       position: relative;
@@ -85,12 +103,14 @@
         left: 0;
         right: 0;
         z-index: 0;
-        background-image: linear-gradient(to right,
-            white,
-            #232323 15%,
-            var(--color-black),
-            #232323 85%,
-            white);
+        background-image: linear-gradient(
+          to right,
+          white,
+          #232323 15%,
+          var(--color-black),
+          #232323 85%,
+          white
+        );
       }
 
       &__text {
