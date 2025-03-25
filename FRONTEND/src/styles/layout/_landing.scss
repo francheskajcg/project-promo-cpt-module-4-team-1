@@ -1,3 +1,5 @@
+@use '../core/mixins' as mx; 
+
 .landing {
   display: flex;
   flex-direction: column;
@@ -6,8 +8,12 @@
   align-items: center;
 
   &__text {
-    font-size: 20px;
+    font-size: 18px;
     margin-bottom: 20px;
+
+    @include mx.tablet {
+      font-size: 20;
+    }
   }
 }
 
@@ -19,14 +25,17 @@
 }
 
 .graphic {
-  width: 350px;
+  width: 280px;
   display: flex;
   flex-direction: row;
 
+  @include mx.tablet {
+    width: 350px;
+  }
 }
 
 .btn__links {
   display: flex;
   justify-content: space-between;
-  gap: 50px;
+  gap: 20px;
 }

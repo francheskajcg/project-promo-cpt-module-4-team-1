@@ -1,3 +1,4 @@
+@use 'core/mixins';
 @use 'core/reset';
 @use 'layout/header';
 @use 'layout/hero';
@@ -9,3 +10,4 @@
 @use 'layout/createPage';
 @use 'layout/imageEditor';
 @use 'layout/footer';
+
