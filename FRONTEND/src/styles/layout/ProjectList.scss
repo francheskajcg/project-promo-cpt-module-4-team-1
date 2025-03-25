@@ -75,11 +75,12 @@
 
     @include mx.tablet {
       width: 350px;
-      max-width: 700px;
+      max-width: 1200px;
     }
 
     @include mx.desktop {
       margin-block: 4px;
+      width: 350px;
     }
 
     /*@include mx.desktop {
