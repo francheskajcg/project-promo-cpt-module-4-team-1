@@ -92,30 +92,6 @@
   }
 }
 
-.hero {
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  font-family: 'Poppins', sans-serif;
-}
-
-@media screen and (min-width: 768px) {
-  .hero {
-    grid-column: span 2;
-  }
-}
-
-.hero .title {
-  font-size: 20px;
-  margin-bottom: 8px;
-}
-
-.hero .hero__text {
-  font-size: 13px;
-  text-align: center;
-  margin-inline: 4rem;
-  margin-bottom: 1.8rem;
-}
-
 /* === GENERAL === */
 .container {
   padding: 22px;
@@ -164,13 +140,20 @@
 /* === HERO === */
 .hero {
   text-align: center;
-  padding-inline: 1rem;
+  margin-inline: 1rem;
+  margin-block: 2rem;
 }
 
 .hero__title {
   font: var(--font-title-big);
   color: var(--color-white);
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+@media screen and (min-width: 768px) {
+  .hero__title {
+    font-size: 35px;
+  }
 }
 
 .hero__text {
@@ -178,6 +161,12 @@
   color: var(--color-white-50);
   max-width: 600px;
   margin-inline: auto;
+}
+
+@media screen and (min-width: 768px) {
+  .hero__text {
+    font-size: 20px;
+  }
 }
 
 /* === PREVIEW === */
@@ -267,6 +256,13 @@
   overflow: hidden;
   background-color: var(--color-greyish-brown);
   margin-bottom: 0.5rem;
+}
+
+@media screen and (min-width: 768px) {
+  .card__authorPhoto {
+    width: 90px;
+    height: 90px;
+  }
 }
 
 .card__uploadAuthorPhoto {
