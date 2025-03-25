@@ -230,10 +230,12 @@ app.get('/autores/:uuid', async (req, res) => {
 });
 
 // Estáticos
-app.use(express.static(path.join(__dirname, 'static_detail_styles')));
+app.use('/styles', express.static(path.join(__dirname, 'static_detail_styles')));
+
 app.use(express.static(path.join(__dirname, 'static_public_frontend')));
 
 // React (SPA)
+
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'static_public_frontend', 'index.html'));
 });
