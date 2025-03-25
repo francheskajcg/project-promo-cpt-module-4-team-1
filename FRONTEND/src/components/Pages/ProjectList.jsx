@@ -44,6 +44,7 @@ function ProjectList() {
           !error &&
           projects.map((project) => (
             <article key={project.id} className="cardList">
+              <a href={`http://localhost:3000/autores/${project.id}`}></a>
               <h2 className="cardList__projectTitle">
                 <span className="cardList__projectTitle__text">
                   {project.name}
