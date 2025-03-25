@@ -1,4 +1,11 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 :root {
+  
   /* COLORS */
 
   --color-black: #000000;
@@ -86,7 +93,9 @@
 }
 
 .hero {
-  margin-bottom: 3rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-family: 'Poppins', sans-serif;
 }
 
 @media screen and (min-width: 768px) {
@@ -96,12 +105,12 @@
 }
 
 .hero .title {
-  font: var(--font-title-big);
+  font-size: 20px;
   margin-bottom: 8px;
 }
 
 .hero .hero__text {
-  font: var(--font-text-big);
+  font-size: 13px;
   text-align: center;
   margin-inline: 4rem;
   margin-bottom: 1.8rem;
@@ -178,10 +187,11 @@
   flex-direction: column;
   align-items: center;
   padding-bottom: 3rem;
+  margin-bottom: 3rem;
 }
 
 .preview__mockup {
-  width: 90%;
+  width: 100%;
   max-width: 600px;
   aspect-ratio: 1 / 1;
   border-radius: 20px;
@@ -200,7 +210,7 @@
 /* === CARD === */
 .card {
   position: absolute;
-  bottom: -60px;
+  bottom: -140px;
   width: 90%;
   max-width: 420px;
   background-color: var(--color-white);
@@ -246,6 +256,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
   grid-column: 1 / 2;
 }
 
@@ -269,7 +280,7 @@
   color: var(--color-greyish-brown);
 }
 
-.card__name {
+.card__nameAuthor {
   font: var(--font-card-title);
   margin-bottom: 0.4rem;
   text-align: center;
@@ -277,6 +288,10 @@
 
 .card__project {
   grid-column: 2 / 3;
+}
+
+.card__name {
+  font-size: 11px;
 }
 
 .card__slogan {
@@ -330,5 +345,5 @@
 .footer {
   display: flex;
   justify-content: center;
-  padding: 1.5rem;
+  margin-top: 150px;
 }
