@@ -1,5 +1,6 @@
 .preview {
 
+
   .projectImage,
   .uploadProjectImage {
     width: 100%;
@@ -28,7 +29,8 @@
   }
 
   .card {
-    margin-inline: 20px;
+    margin-inline: -2px;
+    padding-inline: 2px;
     transform: translateY(-45px);
     display: grid;
     grid-template-columns: 40% 60%;
