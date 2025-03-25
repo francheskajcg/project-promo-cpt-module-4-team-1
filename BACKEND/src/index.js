@@ -5,12 +5,40 @@ const mysql = require("mysql2/promise");
 const path = require("node:path");
 const { v4: uuidv4 } = require("uuid");
 
+const swaggerJsDoc = require("swagger-jsdoc");
+const swaggerUi = require("swagger-ui-express");
+
+// Configuración de Swagger
+const swaggerOptions = {
+  definition: {
+    openapi: "3.0.0",
+    info: {
+      title: "API de Proyectos",
+      version: "1.0.0",
+      description: "Documentación de la API de proyectos",
+    },
+    servers: [
+      {
+        url: "http://localhost:3000",
+        description: "Servidor de desarrollo",
+      },
+    ],
+  },
+  apis: [__filename], // Indica dónde buscar los comentarios de Swagger
+};
+
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
+
+module.exports = { swaggerUi, swaggerDocs };
+
+
 const app = express();
 
 // Middlewares
 app.use(cors());
 app.use(express.json({ limit: '25Mb' }));
 app.set('view engine', 'ejs');
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 // Conexión con MySQL
 async function getConnection() {
@@ -26,6 +54,7 @@ async function getConnection() {
   return connection;
 }
 
+
 // Servidor
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
@@ -35,6 +64,16 @@ app.listen(port, () => {
 // ENDPOINTS
 
 // Obtener todos los proyectos
+
+/**
+ * @swagger
+ * /api/autores:
+ *   get:
+ *     summary: Obtiene todos los usuarios
+ *     responses:
+ *       200:
+ *         description: Lista de usuarios
+ */
 app.get("/api/autores", async (req, res) => {
   const conn = await getConnection();
 
@@ -53,7 +92,60 @@ app.get("/api/autores", async (req, res) => {
   });
 });
 
-// Crear proyecto
+/**
+  * @swagger
+ * /api/autores:
+ *   post:
+ *     summary: Crear un autor
+ *     tags: 
+ *       - Autores
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *                 description: Nombre del proyecto
+ *                 example: "Mi Proyecto"
+ *               slogan:
+ *                 type: string
+ *                 description: Eslogan del proyecto
+ *                 example: "Innovando el futuro"
+ *               technologies:
+ *                 type: string
+ *                 description: Tecnologías utilizadas
+ *                 example: "React, Node.js, MySQL"
+ *               repo:
+ *                 type: string
+ *                 description: URL del repositorio
+ *                 example: "https://github.com/user/proyecto"
+ *               demo:
+ *                 type: string
+ *                 description: URL de la demo
+ *                 example: "https://mi-proyecto-demo.com"
+ *     responses:
+ *       201:
+ *         description: Autor creado correctamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: true
+ *                 cardURL:
+ *                   type: string
+ *                   description: URL del autor creado
+ *                   example: "http://localhost:3000/autores/:uuid"
+ *       400:
+ *         description: Error en la solicitud
+ *       500:
+ *         description: Error del servidor
+*/
 app.post("/api/autores", async (req, res) => {
   const uuid = uuidv4();
   let conn;
