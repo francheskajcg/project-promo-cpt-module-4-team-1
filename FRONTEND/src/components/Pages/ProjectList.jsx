@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router";
 import "../../styles/layout/ProjectList.scss";
 import Hero from "../Hero";
 
@@ -29,7 +30,10 @@ function ProjectList() {
   }, []);
   return (
     <>
-      <Hero buttonText="Nuevo Proyecto" />
+      <Hero />
+      <Link to="/create" className="button--link">
+        Nuevo Proyecto
+      </Link>
       <section className="previewList">
         {isLoading && (
           <p className="project-list__loading">Cargando proyectos...</p>
