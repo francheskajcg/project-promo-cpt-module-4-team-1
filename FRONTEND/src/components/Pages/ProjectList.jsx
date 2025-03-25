@@ -30,9 +30,7 @@ function ProjectList() {
   return (
     <>
       <Hero buttonText="Nuevo Proyecto" />
-      <section className="preview">
-        <h1>Proyectos Personales Molones</h1>
-
+      <section className="previewList">
         {isLoading && (
           <p className="project-list__loading">Cargando proyectos...</p>
         )}
@@ -41,33 +39,39 @@ function ProjectList() {
         {!isLoading &&
           !error &&
           projects.map((project) => (
-            <article key={project.id} className="card">
-              <h2 className="card__projectTitle">
-                <span className="card__projectTitle__text">{project.name}</span>
+            <article key={project.id} className="cardList">
+              <h2 className="cardList__projectTitle">
+                <span className="cardList__projectTitle__text">
+                  {project.name}
+                </span>
               </h2>
 
-              <div className="card__author">
-                <div className="card__authorPhoto">
+              <div className="cardList__author">
+                <div className="cardList__authorPhoto">
                   <img
-                    className="card__uploadAuthorPhoto"
+                    className="cardList__uploadAuthorPhoto"
                     src={project.image || "/images/avatar.webp"}
                     alt={project.autor}
                   />
                 </div>
 
-                <p className="card__job">{project.job}</p>
+                <p className="cardList__job">{project.job}</p>
 
-                <h3 className="card__name">{project.autor}</h3>
+                <h3 className="cardList__name">{project.autor}</h3>
               </div>
 
-              <div className="card__project">
-                <h3 className="card__name">{project.name}</h3>
-                <p className="card__slogan">{project.slogan}</p>
-                <h3 className="card__descriptionTitle">Product description</h3>
-                <p className="card__description">{project.description}</p>
+              <div className="cardList__project">
+                <h3 className="cardList__name">{project.name}</h3>
+                <p className="cardList__slogan">{project.slogan}</p>
+                <h3 className="cardList__descriptionTitle">
+                  Product description
+                </h3>
+                <p className="cardList__description">{project.description}</p>
 
-                <div className="card__technicalInfo">
-                  <p className="card__technologies">{project.technologies}</p>
+                <div className="cardList__technicalInfo">
+                  <p className="cardList__technologies">
+                    {project.technologies}
+                  </p>
 
                   {project.demo && (
                     <a

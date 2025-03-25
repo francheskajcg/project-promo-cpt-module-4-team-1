@@ -1,6 +1,14 @@
 @use '../core/mixins' as mx; 
 
-.preview {
+.previewList {
+  margin-top: 100px;
+
+  @include mx.tablet {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: space-between; 
+    gap: 20px; 
+  }
 
   .projectImage,
   .uploadProjectImage {
@@ -28,33 +36,39 @@
     font-style: italic;
     margin-top: 10px;
   }
-  .card {
+  .cardList {
     margin-block: 25px;
     margin-inline: -2px;
     padding-inline: 2px;
     transform: translateY(-45px);
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 40% 60%;
     color: var(--color-black);
     font: var(--font-card-text);
     border-radius: 20px;
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
-    border-style: solid;
+    
     border-width: 1px;
     border-image-source: linear-gradient(to bottom,
         var(--color-white) 0%,
         rgba(0, 0, 0, 0));
     border-image-slice: 1;
     background-image: linear-gradient(to bottom, var(--color-white), var(--color-white)),
-      linear-gradient(to bottom, var(--color-white) 0%, rgba(0, 0, 0, 0));
+      linear-gradient(to bottom, var(--color-white) 0%, rgba(158, 30, 30, 0));
     background-origin: border-box;
     background-clip: content-box, border-box;
 
     @include mx.tablet {
-     grid-template-columns: 1fr 1fr;
+     width: 350px;
     }
 
+    @include mx.desktop {
+      width: 400px;
+      margin-inline: 80px;
+    }
+
+  
     &__projectTitle {
       grid-column: 2;
       position: relative;
