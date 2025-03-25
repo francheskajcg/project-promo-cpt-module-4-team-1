@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "../../styles/layout/ProjectList.scss";
+import Hero from "../Hero";
 
 function ProjectList() {
   const [projects, setProjects] = useState([]);
@@ -27,84 +28,73 @@ function ProjectList() {
       .finally(() => setIsLoading(false));
   }, []);
   return (
-    <section className="preview">
-      <h1>Proyectos Personales Molones</h1>
+    <>
+      <Hero buttonText="Nuevo Proyecto" />
+      <section className="preview">
+        <h1>Proyectos Personales Molones</h1>
 
-      {isLoading && (
-        <p className="project-list__loading">Cargando proyectos...</p>
-      )}
-      {error && <p className="project-list__error">{error}</p>}
+        {isLoading && (
+          <p className="project-list__loading">Cargando proyectos...</p>
+        )}
+        {error && <p className="project-list__error">{error}</p>}
 
-      {!isLoading &&
-        !error &&
-        projects.map((project) => (
+        {!isLoading &&
+          !error &&
+          projects.map((project) => (
+            <article key={project.id} className="card">
+              <h2 className="card__projectTitle">
+                <span className="card__projectTitle__text">{project.name}</span>
+              </h2>
 
+              <div className="card__author">
+                <div className="card__authorPhoto">
+                  <img
+                    className="card__uploadAuthorPhoto"
+                    src={project.image || "/images/avatar.webp"}
+                    alt={project.autor}
+                  />
+                </div>
 
-          <article key={project.id} className="card">
-            <h2 className="card__projectTitle">
-              <span className="card__projectTitle__text">{project.name}</span>
-            </h2>
+                <p className="card__job">{project.job}</p>
 
-            <div className="card__author">
-              <div className="card__authorPhoto">
-                <img
-                  className="card__uploadAuthorPhoto"
-                  src={project.image || "/images/avatar.webp"}
-                  alt={project.autor}
-                />
+                <h3 className="card__name">{project.autor}</h3>
               </div>
 
+              <div className="card__project">
+                <h3 className="card__name">{project.name}</h3>
+                <p className="card__slogan">{project.slogan}</p>
+                <h3 className="card__descriptionTitle">Product description</h3>
+                <p className="card__description">{project.description}</p>
 
-              <p className="card__job">{project.job}</p>
+                <div className="card__technicalInfo">
+                  <p className="card__technologies">{project.technologies}</p>
 
-              <h3 className="card__name">{project.autor}</h3>
-            </div>
-
-            <div className="card__project">
-
-              <h3 className="card__name">
-                {project.name}
-              </h3>
-              <p className="card__slogan">
-                {project.slogan}
-              </p>
-              <h3 className="card__descriptionTitle">Product description</h3>
-              <p className="card__description">
-                {project.description}
-              </p>
-
-
-
-              <div className="card__technicalInfo">
-                <p className="card__technologies">
-                  {project.technologies}
-                </p>
-
-                {project.demo && (
-                  <a
-                    className="icon icon__www"
-                    href={project.demo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Web link
-                  </a>
-                )}
-                {project.repo && (
-                  <a
-                    className="icon icon__github"
-                    href={project.repo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    GitHub link
-                  </a>
-                )}
+                  {project.demo && (
+                    <a
+                      className="icon icon__www"
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Web link
+                    </a>
+                  )}
+                  {project.repo && (
+                    <a
+                      className="icon icon__github"
+                      href={project.repo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      GitHub link
+                    </a>
+                  )}
+                </div>
               </div>
-            </div>
-          </article>
-        ))}
-    </section>
+            </article>
+          ))}
+      </section>
+    </>
   );
 }
 

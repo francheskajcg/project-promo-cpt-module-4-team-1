@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function Hero() {
+function Hero({ buttonText = "Ver proyectos" }) {
   return (
     <section className="hero">
       <h2 className="title">Proyectos Molones</h2>
@@ -8,7 +8,7 @@ function Hero() {
         Escaparate en línea para recoger ideas a través de la tecnología
       </p>
       <Link to="/list" className="button--link">
-        Ver proyectos
+        {buttonText}
       </Link>
     </section>
   );
