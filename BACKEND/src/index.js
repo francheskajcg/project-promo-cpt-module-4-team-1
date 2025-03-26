@@ -40,13 +40,13 @@ app.use(express.json({ limit: '25Mb' }));
 app.set('view engine', 'ejs');
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
+console.log(`host: ${process.env["MYSQL_HOST"]},
+  port: ${process.env["MYSQL_PORT"]},
+  user: ${process.env["MYSQL_USER"]},
+  password: ${process.env["MYSQL_PASS"]},
+  database: ${process.env["MYSQL_SCHEMA"]}`);
 // Conexión con MySQL
 async function getConnection() {
-  console.log(`host: ${process.env["MYSQL_HOST"]},
-    port: ${process.env["MYSQL_PORT"]},
-    user: ${process.env["MYSQL_USER"]},
-    password: ${process.env["MYSQL_PASS"]},
-    database: ${process.env["MYSQL_SCHEMA"]}`)
   const connectionData = {
     host: process.env["MYSQL_HOST"],
     port: process.env["MYSQL_PORT"],
