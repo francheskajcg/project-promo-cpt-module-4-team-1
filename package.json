@@ -1,18 +1,15 @@
 {
-  "name": "project-promo-cpt-module-4-team-1",
-  "version": "1.0.0",
-  "main": "index.js",
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node --watch src/index.js",
-    "start": "node src/index.js",
-    "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": ""
-}
+    "name": "project-root",
+    "version": "1.0.0",
+    "description": "Raíz del proyecto con backend y frontend",
+    "main": "BACKEND/src/index.js",
+    "scripts": {
+      "start": "node BACKEND/src/index.js",
+      "dev": "node --watch BACKEND/src/index.js"
+    },
+    "engines": {
+      "node": "22.x"
+    },
+    "author": "Team 1 - Adalab",
+    "license": "ISC"
+  }
