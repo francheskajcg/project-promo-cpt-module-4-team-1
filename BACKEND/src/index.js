@@ -168,7 +168,7 @@ app.post("/api/autores", async (req, res) => {
     );
 
     await conn.commit();
-    res.json({ success: true, cardURL: `https://project-promo-cpt-module-4-team-1.onrender.com/autores/${uuid}` });
+    res.json({ success: true, cardURL: `https://project-promo-cpt-module-4-team-1-njsx.onrender.com/autores/${uuid}` });
   } catch (err) {
     if (conn) await conn.rollback();
     res.status(500).json({ success: false, message: err.toString() });
