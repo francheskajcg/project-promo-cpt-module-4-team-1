@@ -224,7 +224,7 @@ app.get('/autores/:uuid', async (req, res) => {
     }
 
     const projectData = results[0];
-    const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173';
+    const frontendUrl = process.env.FRONTEND_URL;
 
     res.render('projectDetail', {
       projectData,
