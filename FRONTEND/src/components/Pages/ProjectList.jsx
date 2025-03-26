@@ -45,7 +45,7 @@ function ProjectList() {
           projects.map((project) => (
             <article key={project.id} className="cardList">
               <a
-                href={`http://localhost:3000/autores/${project.id}`}
+                href={`https://project-promo-cpt-module-4-team-1.onrender.com/autores/${project.id}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn_link"
