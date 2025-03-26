@@ -224,7 +224,7 @@ app.get('/autores/:uuid', async (req, res) => {
     }
 
     const projectData = results[0];
-    const frontendUrl = process.env.FRONTEND_URL;
+    const frontendUrl = "https://project-promo-cpt-module-4-team-1-njsx.onrender.com";
 
     res.render('projectDetail', {
       projectData,
