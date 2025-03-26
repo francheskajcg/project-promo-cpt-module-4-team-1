@@ -9,7 +9,7 @@ function ProjectList() {
   const [isLoading, setIsLoading] = useState(true);
 
   const API_URL = import.meta.env.PROD
-    ? "/api/autores"
+    ? "https://project-promo-cpt-module-4-team-1-njsx.onrender.com/api/autores"
     : "http://localhost:3000/api/autores";
 
   useEffect(() => {
