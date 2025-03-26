@@ -224,7 +224,12 @@ app.get('/autores/:uuid', async (req, res) => {
     }
 
     const projectData = results[0];
-    res.render('projectDetail', { projectData });
+    const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173';
+
+    res.render('projectDetail', {
+      projectData,
+      frontendUrl: `${frontendUrl}/#/list`
+    });
   } catch (err) {
     res.status(500).send("Error interno del servidor");
   }
