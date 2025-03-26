@@ -2,13 +2,12 @@
     margin-inline: auto;
     display: grid;
     grid-template-columns: 1fr;
-    align-items: center;
+ 
 }
 
 @media (min-width:768px) {
     .createPage {
         max-width: 980px;
-        
         grid-template-columns: 6fr 5fr;
         gap: 20px;
     }

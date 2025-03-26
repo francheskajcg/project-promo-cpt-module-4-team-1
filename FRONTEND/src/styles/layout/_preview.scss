@@ -1,5 +1,7 @@
 .preview {
-
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 
   .projectImage,
   .uploadProjectImage {
@@ -29,19 +31,19 @@
   }
 
   .card {
-
+    width: 94%;
     margin-block: 25px;
     margin-inline: -2px;
     padding-inline: 2px;
     transform: translateY(-45px);
     display: grid;
+   
     grid-template-columns: 40% 60%;
     color: var(--color-black);
     font: var(--font-card-text);
     border-radius: 20px;
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
-
     border-width: 1px;
     border-image-source: linear-gradient(to bottom,
         var(--color-white) 0%,
