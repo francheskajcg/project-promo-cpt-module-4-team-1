@@ -75,9 +75,7 @@ function ProjectList() {
               <div className="cardList__project">
                 <h3 className="cardList__name">{project.name}</h3>
                 <p className="cardList__slogan">{project.slogan}</p>
-                <h3 className="cardList__descriptionTitle">
-                  Product description
-                </h3>
+
                 <p className="cardList__description">{project.description}</p>
 
                 <div className="cardList__technicalInfo">

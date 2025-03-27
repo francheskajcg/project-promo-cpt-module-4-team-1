@@ -1,100 +1,119 @@
 <!DOCTYPE html>
 <html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Proyectos Molones | <%= projectData.name %></title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Catamaran:wght@500&family=Montserrat:wght@300;400;700&family=Poppins:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles/main.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Proyectos Molones | <%= projectData.name %>
-  </title>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Catamaran:wght@500&family=Montserrat:wght@300;400;700&family=Poppins:wght@300;400;500&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="/styles/main.css" />
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <header class="header">
+        <a class="header__brand" href="/" title="Volver a la página de inicio">
+          <img
+            class="header__companyLogo"
+            src="/styles/images/laptop-code-solid.svg"
+            alt="Logo proyectos molones"
+          />
+          <h1 class="header__title">Proyectos molones</h1>
+        </a>
+        <img
+          class="logoSponsor"
+          src="/styles/images/adalab.png"
+          alt="Logo Adalab"
+        />
+      </header>
 
-</head>
+      <!-- Hero -->
+      <section class="hero">
+        <h2 class="hero__title">Proyectos Molones</h2>
+        <p class="hero__text">
+          Escaparate en línea para recoger ideas a través de la tecnología.
+        </p>
+        <a href="<%= frontendUrl %>" class="button--link">Volver al listado</a>
+      </section>
 
-<body>
-  <div class="container">
-    <!-- Header -->
-    <header class="header">
-      <a class="header__brand" href="/" title="Volver a la página de inicio">
-        <img class="header__companyLogo" src="/styles/images/laptop-code-solid.svg" alt="Logo proyectos molones" />
-        <h1 class="header__title">Proyectos molones</h1>
-      </a>
-      <img class="logoSponsor" src="/styles/images/adalab.png" alt="Logo Adalab" />
-    </header>
-
-    <!-- Hero -->
-    <section class="hero">
-      <h2 class="hero__title">Proyectos Molones</h2>
-      <p class="hero__text">Escaparate en línea para recoger ideas a través de la tecnología.</p>
-      <a href="<%= frontendUrl %>" class="button--link">Volver al listado</a>
-
-      
-      
-    </section>
-
-    <!-- Preview principal -->
-    <main class="preview">
-      <div class="preview__mockup">
-        <% if (projectData.photo) { %>
-          <img class="preview__image" src="<%= projectData.photo %>" alt="Vista previa del proyecto" />
+      <!-- Preview principal -->
+      <main class="preview">
+        <div class="preview__mockup">
+          <% if (projectData.photo) { %>
+          <img
+            class="preview__image"
+            src="<%= projectData.photo %>"
+            alt="Vista previa del proyecto"
+          />
           <% } %>
-      </div>
-
-      <article class="card">
-        <h2 class="card__projectTitle">
-          <span class="card__projectTitle--text">
-            <%= projectData.name || 'Personal Project Card' %>
-          </span>
-        </h2>
-
-        <div class="card__author">
-          <div class="card__authorPhoto">
-            <% if (projectData.image) { %>
-              <img class="card__uploadAuthorPhoto" src="<%= projectData.image %>" alt="Foto de la autora" />
-              <% } %>
-          </div>
-          <p class="card__job">
-            <%= projectData.job || 'Full Stack Developer' %>
-          </p>
-          <h3 class="card__nameAuthor">
-            <%= projectData.autor || 'Emmelie Björklund' %>
-          </h3>
         </div>
 
-        <div class="card__project">
-          <h3 class="card__name">
-            <%= projectData.name || 'Elegant Workspace' %>
-          </h3>
-          <p class="card__slogan">
-            <%= projectData.slogan || 'Diseños Exclusivos' %>
-          </p>
-          <h3 class="card__descriptionTitle">Product Description</h3>
-          <p class="card__description">
-            <%= projectData.description || 'Descripción del proyecto aquí...' %>
-          </p>
+        <article class="card">
+          <h2 class="card__projectTitle">
+            <span class="card__projectTitle--text">
+              <%= projectData.name || 'Personal Project Card' %>
+            </span>
+          </h2>
 
-          <div class="card__technicalInfo">
-            <p class="card__technologies">
-              <%= projectData.technologies || 'React JS - HTML - CSS' %>
+          <div class="card__author">
+            <div class="card__authorPhoto">
+              <% if (projectData.image) { %>
+              <img
+                class="card__uploadAuthorPhoto"
+                src="<%= projectData.image %>"
+                alt="Foto de la autora"
+              />
+              <% } %>
+            </div>
+            <p class="card__job">
+              <%= projectData.job || 'Full Stack Developer' %>
             </p>
-            <% if (projectData.demo) { %>
-              <a class="icon icon__www" href="<%= projectData.demo %>" target="_blank"></a>
-              <% } %>
-                <% if (projectData.repo) { %>
-                  <a class="icon icon__github" href="<%= projectData.repo %>" target="_blank"></a>
-                  <% } %>
+            <h3 class="card__nameAuthor">
+              <%= projectData.autor || 'Emmelie Björklund' %>
+            </h3>
           </div>
-        </div>
-      </article>
-    </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-      <img src="/styles/images/adalab.png" alt="Adalab" class="logoSponsor" />
-    </footer>
-  </div>
-</body>
+          <div class="card__project">
+            <h3 class="card__name">
+              <%= projectData.name || 'Elegant Workspace' %>
+            </h3>
+            <p class="card__slogan">
+              <%= projectData.slogan || 'Diseños Exclusivos' %>
+            </p>
+            <p class="card__description">
+              <%= projectData.description || 'Descripción del proyecto aquí...'
+              %>
+            </p>
 
+            <div class="card__technicalInfo">
+              <p class="card__technologies">
+                <%= projectData.technologies || 'React JS - HTML - CSS' %>
+              </p>
+              <% if (projectData.demo) { %>
+              <a
+                class="icon icon__www"
+                href="<%= projectData.demo %>"
+                target="_blank"
+              ></a>
+              <% } %> <% if (projectData.repo) { %>
+              <a
+                class="icon icon__github"
+                href="<%= projectData.repo %>"
+                target="_blank"
+              ></a>
+              <% } %>
+            </div>
+          </div>
+        </article>
+      </main>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <img src="/styles/images/adalab.png" alt="Adalab" class="logoSponsor" />
+      </footer>
+    </div>
+  </body>
 </html>

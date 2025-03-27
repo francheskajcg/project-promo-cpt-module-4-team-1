@@ -46,7 +46,6 @@ function Preview({ projectData }) {
           <p className="card__slogan">
             {projectData.slogan || "Diseños Exclusivos"}
           </p>
-          <h3 className="card__descriptionTitle">Product description</h3>
           <p className="card__description">
             {projectData.description || "Descripción del proyecto aquí..."}
           </p>

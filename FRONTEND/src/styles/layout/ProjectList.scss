@@ -14,7 +14,7 @@
   }
 
   @include mx.desktop {
-    margin-inline: 220px;
+    margin-inline: 50px;
   }
 
   .projectImage,
@@ -56,8 +56,8 @@
     border-radius: 20px;
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
-    width: 280px;
-
+    min-width: 280px;
+    max-width: 350px;
     border-width: 1px;
     border-image-source: linear-gradient(to bottom,
         var(--color-white) 0%,
@@ -71,14 +71,15 @@
     background-clip: content-box, border-box;
 
     @include mx.tablet {
+   
       width: 350px;
-      max-width: 1200px;
+      margin-block: 4px;
     }
 
     @include mx.desktop {
-      margin-block: 4px;
-      width: 350px;
+      max-width: 600px;
     }
+
 
     /*@include mx.desktop {
       width: 400px;
@@ -125,6 +126,9 @@
     }
 
     &__author {
+      padding: 6px;
+      padding-left: 5px;
+      padding-right: 8px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -164,11 +168,12 @@
 
     &__project {
       margin-right: 10px;
+      padding-left: 5px;
     }
 
     &__slogan {
       font: var(--font-card-subtitle);
-      margin-top: -0.2rem;
+      margin-top: 0.2rem;
       margin-bottom: 0.8rem;
     }
 
@@ -192,10 +197,10 @@
 
 .btn_link {
   display: block;
-  min-width: 120px;
-  max-width: 150px;
-  margin: 8px;
-  padding: 5px 18px;
+  min-width: 95px;
+  max-width: 100px;
+  margin: 10px;
+  padding: 5px;
   color: var(--color-white);
   font: var(--font-button);
   text-transform: none;
